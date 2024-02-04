@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Samurai_V2_.Net_8.DbContexts;
 using Samurai_V2_.Net_8.DependencyContainer;
+using Samurai_V2_.Net_8.Middlewares;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 var builder = WebApplication.CreateBuilder(args);
