@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
+using Samurai_V2_.Net_8.CommonFile;
 namespace Samurai_V2_.Net_8.Middlewares
 {
     public class ExceptionMiddleware
@@ -24,13 +25,14 @@ namespace Samurai_V2_.Net_8.Middlewares
             {
                 _logger.LogError($"Something went wrong: {ex}");
                 await HandleExceptionAsync(context, ex);
+
             }
         }
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            return context.Response.WriteAsync(new ErrorDetails()
+            return context.Response.WriteAsync(new CustomeMiddleWareService()
             {
                 StatusCode = context.Response.StatusCode,
                 Message = "Internal Server Error from the custom middleware."
