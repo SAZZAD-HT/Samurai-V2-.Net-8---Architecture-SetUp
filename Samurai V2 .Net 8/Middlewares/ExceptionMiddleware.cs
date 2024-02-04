@@ -24,19 +24,19 @@ namespace Samurai_V2_.Net_8.Middlewares
             catch (Exception ex)
             {
                 _logger.LogError($"Something went wrong: {ex}");
-                await HandleExceptionAsync(context, ex);
+               // await HandleExceptionAsync(context, ex);
 
             }
         }
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
-        {
-            context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            return context.Response.WriteAsync(new CustomeMiddleWareService()
-            {
-                StatusCode = context.Response.StatusCode,
-                Message = "Internal Server Error from the custom middleware."
-            }.ToString());
-        }
+        //private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+        //{
+        //    context.Response.ContentType = "application/json";
+        //    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        //    return context.Response.WriteAsync(
+        //    {
+        //        StatusCode = context.Response.StatusCode,
+        //        Message = "Internal Server Error from the custom middleware."
+        //    }.ToString());
+        //}
     }
 }
