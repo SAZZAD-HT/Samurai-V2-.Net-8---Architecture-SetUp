@@ -10,17 +10,20 @@ namespace Samurai_V2_.Net_8.Controllers
     [Route("[controller]")]
     public class BookStoreController : ControllerBase
     {
-        private static IBookRepo _bookRepo;
-        public BookStoreController(IBookRepo bookRepo)
+         private static IBookRepo _bookRepo;
+        
+        private readonly ILogger<BookStoreController> _logger;
+
+        public BookStoreController(ILogger<BookStoreController> logger, IBookRepo bookRepo)
         {
+            _logger = logger;
             _bookRepo = bookRepo;
         }
 
-       
         [HttpPost(Name = "CreateNew")]
         public async Task<IActionResult> CreateNew(BookDto b)
         {
-            var data = _bookRepo.CreateBook(b);
+            var data =await  _bookRepo.CreateBook(b);
             return Ok(data);
         }
     }

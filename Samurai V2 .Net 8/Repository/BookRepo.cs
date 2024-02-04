@@ -41,7 +41,7 @@ namespace Samurai_V2_.Net_8.Repository
                 else
                 {
                     //var e = await _dbContexts.TblBook.Where(e => e.BookTitle.ToLower().Trim() == book.BookTitle.ToLower().Trim()).FirstOrDefaultAsync();
-                    var e = await _dbContexts.TblBooks.FirstOrDefaultAsync();
+                    var e = await _dbContexts.TblBooks.Where(e => e.BookTitle.ToLower().Trim() == book.BookTitle.ToLower().Trim()).FirstOrDefaultAsync();
                     if (e != null)
                     {
                         throw new Exception("File is Same");
