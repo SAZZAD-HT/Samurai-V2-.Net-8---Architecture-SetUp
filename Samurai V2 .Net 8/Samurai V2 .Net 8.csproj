@@ -21,9 +21,7 @@
   <ItemGroup>
     <Folder Include="DbContexts\Models\" />
     <Folder Include="Models\" />
-    <Folder Include="DTOs\" />
     <Folder Include="CommonFile\" />
-    <Folder Include="IRepository\" />
     <Folder Include="Middlewares\" />
     <Folder Include="DependencyContainer\" />
   </ItemGroup>

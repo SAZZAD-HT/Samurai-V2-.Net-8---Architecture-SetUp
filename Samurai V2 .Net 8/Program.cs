@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Samurai_V2_.Net_8.DbContexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<BookContexts>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Development")));
+
 var app = builder.Build();
 
-//builder.Services.AddDbContext<SamuraiContext>(options =>
-//    options.UseSqlServer(app.Configuration.GetConnectionString("Development")));
+
 
 // Configure the HTTP request pipeline.
 
