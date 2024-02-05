@@ -20,11 +20,42 @@ namespace Samurai_V2_.Net_8.Controllers
             _bookRepo = bookRepo;
         }
 
-        [HttpPost(Name = "CreateNew")]
+        [HttpPost("", Name = "CreateNew")]
         public async Task<IActionResult> CreateNew(BookDto b)
         {
-            var data =await  _bookRepo.CreateBook(b);
-            return Ok(data);
+            try
+            {
+                var createdBook = await _bookRepo.CreateBook(b);
+
+
+                return StatusCode(StatusCodes.Status201Created, createdBook);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+        [HttpPut("/", Name = "Update")]
+        public async Task<IActionResult> Update(int id,BookDto b)
+        {
+            try
+            {
+                var createdBook = await _bookRepo.updateBooks(id,b);
+
+                if (createdBook == null)
+                {
+                    return StatusCode(StatusCodes.Status404NotFound, "book with id:"+ id + "was not found");
+                }
+                else
+                {
+                  return Ok(createdBook);
+                }
+              
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
         }
     }
 }
