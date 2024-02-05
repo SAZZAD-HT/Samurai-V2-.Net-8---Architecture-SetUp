@@ -2,7 +2,6 @@
 200 OK:
   StatusCodes.Status200OK
 201 Created:
-
  -- StatusCodes.Status201Created
 204 No Content:
   --StatusCodes.Status204NoContent
