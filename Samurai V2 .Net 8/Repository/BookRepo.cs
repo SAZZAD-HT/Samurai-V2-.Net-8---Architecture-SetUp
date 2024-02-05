@@ -80,10 +80,10 @@ namespace Samurai_V2_.Net_8.Repository
                 {
 
                     var e = await _dbContexts.TblBooks.Where(e => e.BookTitle.ToLower().Trim() == book.BookTitle.ToLower().Trim()).FirstOrDefaultAsync();
-                    if (e != null)
-                    {
-                        throw new Exception("File is Same");
-                    }
+                    //if (e != null)
+                    //{
+                    //    throw new Exception("File is Same");
+                    //}
                     data.BookTitle = book.BookTitle;
                     data.Author = book.Author;
                     data.Genre = book.Genre;
