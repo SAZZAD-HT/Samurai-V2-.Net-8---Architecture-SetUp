@@ -20,7 +20,7 @@ namespace Samurai_V2_.Net_8.Controllers
             _bookRepo = bookRepo;
         }
 
-        [HttpPost("", Name = "CreateNew")]
+        [HttpPost("g", Name = "CreateNew")]
         public async Task<IActionResult> CreateNew(BookDto b)
         {
             try
